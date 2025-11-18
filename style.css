@@ -1,177 +1,272 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
 }
 
 body {
-    background: #f5f7fa;
-    padding: 20px;
+  margin: 0;
+  background: #eef1f6;
 }
 
-/* HEADER */
 header {
-    text-align: center;
-    margin-bottom: 30px;
+  background:#2c62b4;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  font-weight: 600;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #333;
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-header p {
-    color: #555;
-    margin-top: 5px;
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* ADD TASK */
-.add-task {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+.task-form input,
+.task-form select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 15px;
 }
 
-.add-task h2 {
-    margin-bottom: 15px;
-    color: #333;
+#add-task {
+  padding: 12px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.add-task input, 
-.add-task textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+#add-task:hover {
+  background: #2563eb;
 }
 
-.add-task button {
-    width: 100%;
-    padding: 12px;
-    background: #007bff;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+/* FILTER */
+.filter-area {
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
-.add-task button:hover {
-    background: #0064cb;
-}
-
-/* FILTERS */
-.filters {
-    margin-bottom: 20px;
-}
-
-.filters h2 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.filter-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.filter-buttons button {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    background: #fff;
-    cursor: pointer;
-}
-
-.filter-buttons button.active {
-    background: #007bff;
-    color: #fff;
+.filter-area select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
 }
 
 /* TASK LIST */
-.task-list h2 {
-    margin-bottom: 15px;
-    color: #333;
+.task-card {
+  background: #fff8a8; /* warna sticky note */
+  padding: 18px;
+  border-radius: 6px;
+  margin: 15px 0;
+  width: 260px;
+  min-height: 120px;
+
+  /* sticky effect */
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+
+  /* efek kertas agak miring */
+  transform: rotate(-2deg);
+  transition: 0.2s ease;
+
+  /* Perubahan warna sesuai deadline */
+  .note-green {
+  background: #e8ffe8; 
+}
+.note-orange {
+  background: #fff4cc; 
+}
+.note-red {
+  background: #ffe2e2; 
+}
+}
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
 }
 
-.task-card {
-    background: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    border-left: 6px solid #007bff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+/* ketika hover, note jadi agak naik dan rapih */
+.task-card:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* warna jika important */
+.task-card.important {
+  background: #ffef6e; /* lebih kuning */
+}
+
+/* warna jika done */
+.task-card.done {
+  background: #d6f5d6;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* judul task */
+.task-header h3 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.task-card::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 15px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.15);
 }
 
 .task-card.done {
-    opacity: 0.6;
-    text-decoration: line-through;
-    border-left-color: #28a745;
+  opacity: 0.6;
+  text-decoration: line-through;
+  border-left-color: #10b981;
 }
 
 .task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.important {
-    font-size: 1.4rem;
-    cursor: pointer;
+.task-header span {
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.desc {
-    margin-top: 8px;
-    color: #555;
-}
-
-.deadline {
-    margin-top: 10px;
-    font-weight: bold;
-}
-
+/* Sticky Notes */
 .deadline.red {
-    color: #d9534f;
+  color: #ef4444;
+}
+
+.deadline.orange {
+  color: #f97316;
 }
 
 .deadline.green {
-    color: #28a745;
+  color: #10b981;
 }
 
-/* Task Actions */
-.task-actions {
-    margin-top: 12px;
+.note-green {
+  background: #e8ffe8;
+}
+
+.note-orange {
+  background: #fff4cc;
+}
+
+.note-red {
+  background: #ffe2e2;
+}
+.sticky-container {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap; 
+    gap: 16px; 
+}
+
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .task-actions button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+  flex: 1;
+  border: none;
+  padding: 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .done-btn {
-    background: #28a745;
-    color: white;
+  background: #10b981;
+  color: white;
 }
 
 .undo-btn {
-    background: #ffc107;
+  background: #eab308;
 }
 
 .delete-btn {
-    background: #dc3545;
-    color: white;
+  background: #ef4444;
+  color: white;
 }
 
-.done-btn:hover { background: #218838; }
-.undo-btn:hover { background: #e0a800; }
-.delete-btn:hover { background: #c82333; }
+.task-desc {
+  font-size: 14px;
+  margin: 5px 0 10px;
+  color: #444;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+}
+textarea {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 650px;
+    min-height: 50px;
+    max-height: 130px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+
+  background: #ff2d2d;          /* merah komik */
+  padding: 14px 22px;
+  
+  border: 4px solid #000;       /* outline tebal */
+  border-radius: 10px;
+
+  color: #fff;                  /* teks putih jelas */
+  font-family: "Comic Sans MS", cursive;
+  font-size: 18px;
+  font-weight: bold;
+
+  box-shadow: 5px 5px 0px #000; /* shadow komik */
+
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+
+  transform: scale(0.7) rotate(-4deg);
+  transition: 
+    opacity 0.25s ease-out,
+    transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: scale(1.05) rotate(0deg);
+}
+
+.hidden {
+  display: none;
+}
